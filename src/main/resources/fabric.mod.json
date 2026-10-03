@@ -1,0 +1,37 @@
+{
+	"schemaVersion": 1,
+	"id": "butcher",
+	"version": "${version}",
+	"name": "Butcher",
+	"description": "This is the mod Cheems made for memory lapse S2!",
+	"authors": [
+		"The infamous CTD"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "MIT",
+	"icon": "assets/butcher/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"name.cheems.butcher.Butcher"
+		],
+		"fabric-datagen": [
+			"name.cheems.butcher.ButcherDataGenerator"
+		],
+		"client": [
+			"name.cheems.butcher.ButcherClient"
+		]
+	},
+	"mixins": [
+		"butcher.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.19.5",
+		"minecraft": "~1.21.1",
+		"java": ">=21",
+		"fabric-api": "*"
+	}
+}
