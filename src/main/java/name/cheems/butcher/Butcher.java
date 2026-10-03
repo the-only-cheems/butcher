@@ -20,6 +20,7 @@ public class Butcher implements ModInitializer {
 
 		ModItems.registerModItems();
 		ModBlocks.registerModBlocks();
+		ModEntityTags.registerEntityTags();
 	}
 
 	public static Identifier id(String path) {

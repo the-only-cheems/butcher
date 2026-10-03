@@ -21,10 +21,12 @@ public class ModItemGroups {
                         entries.add(ModItems.MYSTERY_MEAT_COOKED);
                         entries.add(ModBlocks.FLESH_BLOCK);
 
+                        entries.add(ModItems.RAZOR);
+
                     }).build());
 
 
     public static void registerItemGroups() {
-        Butcher.LOGGER.info("Registering Item group for" + Butcher.MOD_ID);
+        Butcher.LOGGER.info("Registering Item group for " + Butcher.MOD_ID);
     }
 }

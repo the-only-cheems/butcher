@@ -36,10 +36,6 @@ public class ModBlocks {
     }
 
     public static void registerModBlocks() {
-        Butcher.LOGGER.info("Registering blocks for"+ Butcher.MOD_ID);
-
-        ItemGroupEvents.modifyEntriesEvent(ItemGroups.FOOD_AND_DRINK).register(fabricItemGroupEntries -> {
-            fabricItemGroupEntries.add(ModBlocks.FLESH_BLOCK);
-        });
+        Butcher.LOGGER.info("Registering blocks for "+ Butcher.MOD_ID);
     }
 }
