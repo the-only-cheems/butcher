@@ -2,16 +2,11 @@ package name.cheems.butcher.item.custom;
 
 import name.cheems.butcher.ModEntityTags;
 import name.cheems.butcher.item.ModItems;
-import net.fabricmc.fabric.impl.object.builder.FabricEntityTypeImpl;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemUsageContext;
-import net.minecraft.item.Items;
-import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.UseAction;
@@ -39,27 +34,6 @@ public class RazorItem extends Item {
     @Override
     public UseAction getUseAction(ItemStack stack) {
         return UseAction.CROSSBOW;
-    }
-
-    @Override
-    public void onStoppedUsing(ItemStack stack, World world, LivingEntity user, int remainingUseTicks) {
-        if (world.isClient) {
-            return;
-        }
-
-        int chargeTime = MAX_USE_TIME - remainingUseTicks;
-
-        // Only trigger if the razor was charged for at least 10 ticks
-        if (chargeTime >= 40 && user instanceof PlayerEntity player) {
-
-            // Hurt the player
-            player.damage(world.getDamageSources().generic(), 2.0F);
-
-
-            // Drop mystery meat
-            ItemStack mystery_meat = new ItemStack(ModItems.MYSTERY_MEAT);
-            player.dropItem(mystery_meat, true);
-        }
     }
 
     @Override

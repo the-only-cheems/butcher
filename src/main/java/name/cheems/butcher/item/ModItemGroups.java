@@ -22,6 +22,7 @@ public class ModItemGroups {
                         entries.add(ModBlocks.FLESH_BLOCK);
 
                         entries.add(ModItems.RAZOR);
+                        entries.add(ModItems.CLEAVER);
 
                     }).build());
 
