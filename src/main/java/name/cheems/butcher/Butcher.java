@@ -1,5 +1,7 @@
 package name.cheems.butcher;
 
+import name.cheems.butcher.block.ModBlocks;
+import name.cheems.butcher.item.ModItemGroups;
 import name.cheems.butcher.item.ModItems;
 import net.fabricmc.api.ModInitializer;
 
@@ -14,7 +16,10 @@ public class Butcher implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
+		ModItemGroups.registerItemGroups();
+
 		ModItems.registerModItems();
+		ModBlocks.registerModBlocks();
 	}
 
 	public static Identifier id(String path) {

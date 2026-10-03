@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "xx",
+    "xx"
+  ],
+  "key": {
+    "x": {
+      "item": "butcher:mystery_meat"
+    }
+  },
+  "result": {
+    "id": "butcher:flesh_block",
+    "count": 1
+  }
+}

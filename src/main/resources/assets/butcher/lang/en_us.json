@@ -1,4 +1,9 @@
 {
   "item.butcher.mystery_meat": "Mystery Meat",
-  "item.butcher.mystery_meat_cooked": "Seared Mystery Meat"
+  "item.butcher.mystery_meat_cooked": "Seared Mystery Meat",
+
+
+  "block.butcher.flesh_block": "Block of Flesh",
+
+  "itemgroup.butcher.butcher_items": "Butcher Items"
 }

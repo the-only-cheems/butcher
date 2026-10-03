@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "ingredient": {
+    "item": "butcher:mystery_meat"
+  },
+  "result": {
+    "id": "butcher:mystery_meat_cooked"
+  },
+  "experience": 5,
+  "cookingtime": 200
+}

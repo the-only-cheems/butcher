@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "butcher:block/flesh_block"
+    }
+  }
+}

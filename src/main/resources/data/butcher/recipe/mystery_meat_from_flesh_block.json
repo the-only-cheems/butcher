@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "butcher:flesh_block"
+    }
+  ],
+  "result": {
+    "id": "butcher:mystery_meat",
+    "count": 4
+  }
+}
