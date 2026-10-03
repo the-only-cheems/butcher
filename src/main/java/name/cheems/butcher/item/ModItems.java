@@ -10,8 +10,8 @@ import net.minecraft.util.Identifier;
 
 public class ModItems {
 
-    public static final Item MYSTERY_MEAT = registerItem("mystery_meat", new Item(new Item.Settings()));
-    public static final Item MYSTERY_MEAT_COOKED = registerItem("mystery_meat_cooked", new Item(new Item.Settings()));
+    public static final Item MYSTERY_MEAT = registerItem("mystery_meat", new Item(new Item.Settings().food(ModFoodComponents.MYSTERY_MEAT)));
+    public static final Item MYSTERY_MEAT_COOKED = registerItem("mystery_meat_cooked", new Item(new Item.Settings().food(ModFoodComponents.MYSTERY_MEAT_COOKED)));
     public static final Item RAZOR = registerItem("razor", new RazorItem(new Item.Settings().maxDamage(32)));
     public static final Item CLEAVER = registerItem("cleaver", new CleaverItem(new Item.Settings().maxDamage(50)));
 
