@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " ns",
+    "ns ",
+    "s  "
+  ],
+  "key": {
+    "n": {
+      "item": "minecraft:iron_ingot"
+    },
+    "s": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "id": "butcher:razor",
+    "count": 1
+  }
+}

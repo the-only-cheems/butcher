@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "nns",
+    "ns ",
+    "s  "
+  ],
+  "key": {
+    "n": {
+      "item": "minecraft:iron_ingot"
+    },
+    "s": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "id": "butcher:cleaver",
+    "count": 1
+  }
+}

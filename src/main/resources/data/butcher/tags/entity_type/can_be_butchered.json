@@ -6,6 +6,7 @@
     "minecraft:vindicator",
     "minecraft:wandering_trader",
     "minecraft:witch",
-    "minecraft:evoker"
+    "minecraft:evoker",
+    "minecraft:player"
   ]
 }
