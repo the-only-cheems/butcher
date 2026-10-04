@@ -1,12 +1,14 @@
 package name.cheems.butcher.block;
 
 import com.mojang.serialization.MapCodec;
+import name.cheems.butcher.block.custom.FleshLayerBlock;
 import name.cheems.butcher.block.custom.MeatPortalBlock;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import name.cheems.butcher.Butcher;
 import net.minecraft.block.FallingBlock;
+import net.minecraft.block.SnowBlock;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
@@ -28,6 +30,9 @@ public class ModBlocks {
 
     public static final Block MEAT_PORTAL = registerBlock("meat_portal",
             new MeatPortalBlock(AbstractBlock.Settings.create().strength(1f).requiresTool()));
+
+    public static final Block FLESH_LAYER = registerBlock("flesh_layer",
+            new FleshLayerBlock(AbstractBlock.Settings.create().strength(0.5f)));
 
     private static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);

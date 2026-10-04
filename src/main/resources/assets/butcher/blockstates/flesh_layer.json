@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "layers=1": {
+      "model": "butcher:block/flesh_height2"
+    },
+    "layers=2": {
+      "model": "butcher:block/flesh_height4"
+    },
+    "layers=3": {
+      "model": "butcher:block/flesh_height6"
+    },
+    "layers=4": {
+      "model": "butcher:block/flesh_height8"
+    },
+    "layers=5": {
+      "model": "butcher:block/flesh_height10"
+    },
+    "layers=6": {
+      "model": "butcher:block/flesh_height12"
+    },
+    "layers=7": {
+      "model": "butcher:block/flesh_height14"
+    },
+    "layers=8": {
+      "model": "butcher:block/flesh_block"
+    }
+  }
+}

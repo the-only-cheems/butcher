@@ -7,6 +7,7 @@
 
   "block.butcher.flesh_block": "Block of Flesh",
   "block.butcher.meat_portal": "Meat Portal",
+  "block.butcher.flesh_layer": "Flesh Layer",
 
   "itemgroup.butcher.butcher_items": "Butcher Items"
 }

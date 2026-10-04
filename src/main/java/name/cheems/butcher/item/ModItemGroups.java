@@ -19,7 +19,9 @@ public class ModItemGroups {
 
                         entries.add(ModItems.MYSTERY_MEAT);
                         entries.add(ModItems.MYSTERY_MEAT_COOKED);
+
                         entries.add(ModBlocks.FLESH_BLOCK);
+                        entries.add(ModBlocks.FLESH_LAYER);
                         entries.add(ModBlocks.MEAT_PORTAL);
 
                         entries.add(ModItems.RAZOR);
