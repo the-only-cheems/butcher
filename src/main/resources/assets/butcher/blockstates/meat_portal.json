@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "active=false": {
+      "model": "butcher:block/meat_portal"
+    },
+    "active=true": {
+      "model": "butcher:block/meat_portal_active"
+    }
+  }
+}

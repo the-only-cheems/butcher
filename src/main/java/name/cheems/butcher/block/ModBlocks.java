@@ -1,6 +1,7 @@
 package name.cheems.butcher.block;
 
 import com.mojang.serialization.MapCodec;
+import name.cheems.butcher.block.custom.MeatPortalBlock;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
@@ -24,6 +25,9 @@ public class ModBlocks {
                     return null;
                 }
             });
+
+    public static final Block MEAT_PORTAL = registerBlock("meat_portal",
+            new MeatPortalBlock(AbstractBlock.Settings.create().strength(1f).requiresTool()));
 
     private static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);

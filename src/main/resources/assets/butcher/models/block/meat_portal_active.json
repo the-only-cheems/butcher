@@ -1,0 +1,8 @@
+{
+  "parent": "block/cube_column",
+  "elements": [],
+  "textures": {
+    "end": "butcher:block/meat_portal_active",
+    "side": "butcher:block/flesh_block"
+  }
+}

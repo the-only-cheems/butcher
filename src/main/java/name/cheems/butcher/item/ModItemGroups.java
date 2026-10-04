@@ -20,6 +20,7 @@ public class ModItemGroups {
                         entries.add(ModItems.MYSTERY_MEAT);
                         entries.add(ModItems.MYSTERY_MEAT_COOKED);
                         entries.add(ModBlocks.FLESH_BLOCK);
+                        entries.add(ModBlocks.MEAT_PORTAL);
 
                         entries.add(ModItems.RAZOR);
                         entries.add(ModItems.CLEAVER);

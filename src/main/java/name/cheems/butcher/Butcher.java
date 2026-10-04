@@ -3,6 +3,7 @@ package name.cheems.butcher;
 import name.cheems.butcher.block.ModBlocks;
 import name.cheems.butcher.item.ModItemGroups;
 import name.cheems.butcher.item.ModItems;
+import name.cheems.butcher.teleport.MeatPortalTeleport;
 import net.fabricmc.api.ModInitializer;
 
 import net.minecraft.util.Identifier;
@@ -17,6 +18,7 @@ public class Butcher implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		ModItemGroups.registerItemGroups();
+		MeatPortalTeleport.register();
 
 		ModItems.registerModItems();
 		ModBlocks.registerModBlocks();
