@@ -1,9 +1,11 @@
 package name.cheems.butcher.item.custom;
 
 import name.cheems.butcher.ModEntityTags;
+import name.cheems.butcher.effect.ModEffects;
 import name.cheems.butcher.item.ModItems;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -53,6 +55,15 @@ public class RazorItem extends Item {
 
     @Override
     public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
+
+        target.addStatusEffect(new StatusEffectInstance(ModEffects.BLEED,
+                40,
+                0,
+                false,
+                false,
+                true));
+
+
         return true;
     }
 

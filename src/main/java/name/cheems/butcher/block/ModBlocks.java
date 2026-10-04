@@ -29,10 +29,10 @@ public class ModBlocks {
             });
 
     public static final Block MEAT_PORTAL = registerBlock("meat_portal",
-            new MeatPortalBlock(AbstractBlock.Settings.create().strength(1f).requiresTool()));
+            new MeatPortalBlock(AbstractBlock.Settings.create().strength(1f).requiresTool().sounds(BlockSoundGroup.HONEY)));
 
     public static final Block FLESH_LAYER = registerBlock("flesh_layer",
-            new FleshLayerBlock(AbstractBlock.Settings.create().strength(0.5f)));
+            new FleshLayerBlock(AbstractBlock.Settings.create().strength(0.5f).sounds(BlockSoundGroup.HONEY)));
 
     private static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);

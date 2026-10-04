@@ -1,9 +1,11 @@
 package name.cheems.butcher.item.custom;
 
 import name.cheems.butcher.ModEntityTags;
+import name.cheems.butcher.effect.ModEffects;
 import name.cheems.butcher.item.ModItems;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
@@ -21,6 +23,13 @@ public class CleaverItem extends Item{
     @Override
     public void postDamageEntity(ItemStack stack, LivingEntity target, LivingEntity attacker) {
         stack.damage(1, attacker, EquipmentSlot.MAINHAND);
+
+        target.addStatusEffect(new StatusEffectInstance(ModEffects.BLEED,
+                120,
+                0,
+                false,
+                false,
+                true));
 
         if (target.getType().isIn(ModEntityTags.CAN_BE_BUTCHERED)) {
             target.dropItem(ModItems.MYSTERY_MEAT, 1);

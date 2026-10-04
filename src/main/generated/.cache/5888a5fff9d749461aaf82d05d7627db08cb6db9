@@ -1,0 +1,8 @@
+// 1.21.1	2026-10-04T18:45:32.4195568	Butcher/Model Definitions
+54343b7fc48bdd8583ebc72c65b51f3b5c950182 assets\butcher\models\block\flesh_block.json
+1d431b84f699126b3bef92ed3efb825542084c45 assets\butcher\models\item\razor.json
+5b082978daad01d1404096040f42b1ccfa3b0962 assets\butcher\models\item\flesh_block.json
+8aec622e8d170c38386562e902c7efac850430ca assets\butcher\models\item\cleaver.json
+13e8cbaddf660097b0d8ba8bcf7f53101f7cb1a8 assets\butcher\models\item\mystery_meat.json
+099c61f126b89bcc6ae8bf1cc4c358d7184939a2 assets\butcher\blockstates\flesh_block.json
+35f6efea2ab287a302a66ad573a228350b6a15b1 assets\butcher\models\item\mystery_meat_cooked.json

@@ -1,6 +1,8 @@
 package name.cheems.butcher;
 
 import name.cheems.butcher.block.ModBlocks;
+import name.cheems.butcher.damage.ModDamageTypes;
+import name.cheems.butcher.effect.ModEffects;
 import name.cheems.butcher.item.ModItemGroups;
 import name.cheems.butcher.item.ModItems;
 import name.cheems.butcher.teleport.MeatPortalTeleport;
@@ -23,6 +25,8 @@ public class Butcher implements ModInitializer {
 		ModItems.registerModItems();
 		ModBlocks.registerModBlocks();
 		ModEntityTags.registerEntityTags();
+		ModDamageTypes.registerdamagetypes();
+		ModEffects.registerEffects();
 	}
 
 	public static Identifier id(String path) {
