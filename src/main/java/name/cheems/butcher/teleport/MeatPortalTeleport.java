@@ -98,7 +98,7 @@ public class MeatPortalTeleport {
             this.entranceZ = entrance.getZ() + 0.5;
 
             this.destinationX = destination.getX() + 0.5;
-            this.destinationY = destination.getY() + 1.0;
+            this.destinationY = destination.getY() + 1.2;
             this.destinationZ = destination.getZ() + 0.5;
 
             lockPlayer();
