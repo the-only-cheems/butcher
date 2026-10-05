@@ -149,6 +149,7 @@ public class MeatPortalTeleport {
                     );
 
                     hasTeleported = true;
+                    HEARING = false;
                     tick = 0;
                 }
 
