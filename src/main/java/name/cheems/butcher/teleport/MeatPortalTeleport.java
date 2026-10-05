@@ -82,6 +82,8 @@ public class MeatPortalTeleport {
         private final double destinationY;
         private final double destinationZ;
 
+        private final boolean originalNoClip;
+
         private boolean hasTeleported = false;
 
         private TeleportAnimation(
@@ -102,11 +104,12 @@ public class MeatPortalTeleport {
             this.destinationY = destination.getY() + 1.2;
             this.destinationZ = destination.getZ() + 0.5;
 
+            this.originalNoClip = player.noClip;
+
             lockPlayer();
         }
 
         private boolean tick() {
-
 
             if (!player.isAlive()) {
                 return true;
@@ -114,19 +117,12 @@ public class MeatPortalTeleport {
 
             lockPlayer();
 
-            //going in
             if (!hasTeleported) {
 
+                double progress = (double) tick / ANIMATION_TICKS;
+                double eased = progress * progress;
 
-                double progress =
-                        (double) tick / ANIMATION_TICKS;
-
-                // Ease-in effect.
-                double eased =
-                        progress * progress;
-
-                double y =
-                        entranceY - (eased * ANIMATION_DISTANCE);
+                double y = entranceY - (eased * ANIMATION_DISTANCE);
 
                 player.requestTeleport(
                         entranceX,
@@ -156,17 +152,14 @@ public class MeatPortalTeleport {
                 return false;
             }
 
-            //coming out
+            double progress = (double) tick / ANIMATION_TICKS;
 
-            double progress =
-                    (double) tick / ANIMATION_TICKS;
-
-            // Ease-out effect.
             double eased =
                     1.0 - ((1.0 - progress) * (1.0 - progress));
 
             double y =
-                    destinationY - ANIMATION_DISTANCE + (eased * ANIMATION_DISTANCE);
+                    destinationY - ANIMATION_DISTANCE
+                            + (eased * ANIMATION_DISTANCE);
 
             player.requestTeleport(
                     destinationX,
@@ -178,12 +171,17 @@ public class MeatPortalTeleport {
 
             tick++;
 
-            unlockPlayer();
+            if (tick >= ANIMATION_TICKS) {
+                unlockPlayer();
+                return true;
+            }
 
-            return tick >= ANIMATION_TICKS;
+            return false;
         }
 
         private void lockPlayer(){
+            player.noClip = true;
+
             player.setVelocity(0,0,0);
 
             player.fallDistance = 0;
@@ -192,6 +190,8 @@ public class MeatPortalTeleport {
         }
 
         private void unlockPlayer(){
+            player.noClip = originalNoClip;
+
             player.setVelocity(0,0,0);
 
             player.fallDistance = 0;
