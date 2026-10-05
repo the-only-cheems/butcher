@@ -2,6 +2,7 @@ package name.cheems.butcher.teleport;
 
 import name.cheems.butcher.Butcher;
 import name.cheems.butcher.particle.ModParticles;
+import name.cheems.butcher.sound.ModSounds;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -19,6 +20,8 @@ public class MeatPortalTeleport {
     private static final int ANIMATION_TICKS = 24;
 
     private static final double ANIMATION_DISTANCE = 1.2;
+
+    private static boolean HEARING = false;
 
     private static final List<TeleportAnimation> ACTIVE_ANIMATIONS =
             new ArrayList<>();
@@ -180,6 +183,14 @@ public class MeatPortalTeleport {
         }
 
         private void lockPlayer(){
+            ServerWorld wololo = (ServerWorld) player.getWorld();
+
+
+            if (!HEARING){
+                wololo.playSound(null, player.getBlockPos(), ModSounds.MEAT_PORTAL_TELEPORT, SoundCategory.BLOCKS);
+                HEARING = true;
+            }
+
             player.noClip = true;
 
             player.setVelocity(0,0,0);
@@ -197,6 +208,8 @@ public class MeatPortalTeleport {
             player.fallDistance = 0;
 
             player.setNoGravity(false);
+
+            HEARING=false;
         }
 
         private void spawnEntranceParticles() {

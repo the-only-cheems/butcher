@@ -1,0 +1,38 @@
+{
+  "meat_portal_teleport": {
+    "subtitle": "sounds.butcher.meat_portal_teleport",
+    "sounds" : [
+      "butcher:meat_portal_teleport"
+    ]
+  },
+  "flesh_block_break": {
+    "subtitle": "sounds.butcher.flesh_block_break",
+    "sounds" : [
+      "butcher:flesh_block_break"
+    ]
+  },
+  "flesh_block_step": {
+    "subtitle": "sounds.butcher.flesh_block_step",
+    "sounds" : [
+      "butcher:flesh_block_step"
+    ]
+  },
+  "flesh_block_place": {
+    "subtitle": "sounds.butcher.flesh_block_place",
+    "sounds" : [
+      "butcher:flesh_block_place"
+    ]
+  },
+  "flesh_block_hit": {
+    "subtitle": "sounds.butcher.flesh_block_hit",
+    "sounds" : [
+      "butcher:flesh_block_hit"
+    ]
+  },
+  "flesh_block_fall": {
+    "subtitle": "sounds.butcher.flesh_block_fall",
+    "sounds" : [
+      "butcher:flesh_block_fall"
+    ]
+  }
+}

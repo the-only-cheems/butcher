@@ -3,6 +3,7 @@ package name.cheems.butcher.block;
 import com.mojang.serialization.MapCodec;
 import name.cheems.butcher.block.custom.FleshLayerBlock;
 import name.cheems.butcher.block.custom.MeatPortalBlock;
+import name.cheems.butcher.sound.ModSounds;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
@@ -21,7 +22,7 @@ import net.minecraft.util.Identifier;
 public class ModBlocks {
 
     public static final Block FLESH_BLOCK = registerBlock("flesh_block",
-            new FallingBlock(AbstractBlock.Settings.create().strength(0.5f).sounds(BlockSoundGroup.HONEY)) {
+            new FallingBlock(AbstractBlock.Settings.create().strength(0.5f).sounds(ModSounds.FLESH_BLOCK_SOUNDS)) {
                 @Override
                 protected MapCodec<? extends FallingBlock> getCodec() {
                     return null;
@@ -29,10 +30,10 @@ public class ModBlocks {
             });
 
     public static final Block MEAT_PORTAL = registerBlock("meat_portal",
-            new MeatPortalBlock(AbstractBlock.Settings.create().strength(1f).requiresTool().sounds(BlockSoundGroup.HONEY)));
+            new MeatPortalBlock(AbstractBlock.Settings.create().strength(1f).requiresTool().sounds(ModSounds.FLESH_BLOCK_SOUNDS)));
 
     public static final Block FLESH_LAYER = registerBlock("flesh_layer",
-            new FleshLayerBlock(AbstractBlock.Settings.create().strength(0.5f).sounds(BlockSoundGroup.HONEY)));
+            new FleshLayerBlock(AbstractBlock.Settings.create().strength(0.5f).sounds(ModSounds.FLESH_BLOCK_SOUNDS)));
 
     private static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);

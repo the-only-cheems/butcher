@@ -6,6 +6,7 @@ import name.cheems.butcher.effect.ModEffects;
 import name.cheems.butcher.item.ModItemGroups;
 import name.cheems.butcher.item.ModItems;
 import name.cheems.butcher.particle.ModParticles;
+import name.cheems.butcher.sound.ModSounds;
 import name.cheems.butcher.teleport.MeatPortalTeleport;
 import net.fabricmc.api.ModInitializer;
 
@@ -31,6 +32,7 @@ public class Butcher implements ModInitializer {
 		ModDamageTypes.registerdamagetypes();
 		ModEffects.registerEffects();
 		ModParticles.registerParticles();
+		ModSounds.registerSounds();
 	}
 
 
