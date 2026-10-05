@@ -24,9 +24,8 @@ public class BloodParticle extends SpriteBillboardParticle{
 
         float brightness = (float)((Math.random() * (1.0 - 0.5)) + 0.5);
 
-        Butcher.LOGGER.info(String.valueOf(brightness));
-
         this.setColor(brightness, brightness, brightness);
+        this.setAlpha(1.0f);
 
         if (ySpeed == 0.0 && (xSpeed != 0.0 || zSpeed != 0.0)) {
             this.velocityX = xSpeed;
@@ -41,6 +40,10 @@ public class BloodParticle extends SpriteBillboardParticle{
 
             this.age++;
 
+            float alpha = 1.0f - ((float) this.age / maxAge);
+
+            this.setAlpha(alpha);
+
             if (this.age >= this.maxAge) {
                 this.markDead();
             }
@@ -52,6 +55,8 @@ public class BloodParticle extends SpriteBillboardParticle{
 
         if (this.onGround && !landed) {
             this.landed = true;
+
+            this.age = 0;
 
             this.velocityX = 0.0;
             this.velocityY = 0.0;
@@ -72,7 +77,7 @@ public class BloodParticle extends SpriteBillboardParticle{
 
     @Override
     public ParticleTextureSheet getType() {
-        return ParticleTextureSheet.PARTICLE_SHEET_OPAQUE;
+        return ParticleTextureSheet.PARTICLE_SHEET_TRANSLUCENT;
     }
 
     @Environment(EnvType.CLIENT)
