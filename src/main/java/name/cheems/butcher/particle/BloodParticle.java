@@ -9,15 +9,18 @@ import net.minecraft.particle.SimpleParticleType;
 import org.jetbrains.annotations.Nullable;
 
 @Environment(EnvType.CLIENT)
-public class BloodParticle extends RainSplashParticle{
+public class BloodParticle extends SpriteBillboardParticle{
+
+    private boolean landed = false;
+
     public BloodParticle(ClientWorld clientWorld, double x, double y, double z,
                          SpriteProvider spriteProvider, double xSpeed, double ySpeed, double zSpeed) {
         super(clientWorld, x, y, z);
-        this.gravityStrength = 0.04F;
-        this.scale=0.1f;
+        this.gravityStrength = 0.8F;
+        this.scale=(float)((Math.random() * (0.1 - 0.075)) + 0.075);
         this.collidesWithWorld = true;
 
-        this.maxAge = 40;
+        this.maxAge = 400;
 
         float brightness = (float)((Math.random() * (1.0 - 0.5)) + 0.5);
 
@@ -31,6 +34,41 @@ public class BloodParticle extends RainSplashParticle{
             this.velocityZ = zSpeed;
         }
     }
+
+    @Override
+    public void tick() {
+        if (this.landed) {
+
+            this.age++;
+
+            if (this.age >= this.maxAge) {
+                this.markDead();
+            }
+
+            return;
+        }
+
+        super.tick();
+
+        if (this.onGround && !landed) {
+            this.landed = true;
+
+            this.velocityX = 0.0;
+            this.velocityY = 0.0;
+            this.velocityZ = 0.0;
+
+            this.gravityStrength = 0.0F;
+            this.collidesWithWorld = false;
+
+            this.setPos(this.x, this.y + 0.01, this.z);
+
+            // IMPORTANT: kill interpolation
+            this.prevPosX = this.x;
+            this.prevPosY = this.y;
+            this.prevPosZ = this.z;
+        }
+    }
+
 
     @Override
     public ParticleTextureSheet getType() {

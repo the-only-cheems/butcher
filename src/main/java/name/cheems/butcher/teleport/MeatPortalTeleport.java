@@ -107,6 +107,7 @@ public class MeatPortalTeleport {
 
         private boolean tick() {
 
+
             if (!player.isAlive()) {
                 return true;
             }
