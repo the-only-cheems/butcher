@@ -5,6 +5,7 @@ import name.cheems.butcher.damage.ModDamageTypes;
 import name.cheems.butcher.effect.ModEffects;
 import name.cheems.butcher.item.ModItemGroups;
 import name.cheems.butcher.item.ModItems;
+import name.cheems.butcher.particle.ModParticles;
 import name.cheems.butcher.teleport.MeatPortalTeleport;
 import net.fabricmc.api.ModInitializer;
 
@@ -12,6 +13,8 @@ import net.minecraft.util.Identifier;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+
 
 public class Butcher implements ModInitializer {
 	public static final String MOD_ID = "butcher";
@@ -27,7 +30,10 @@ public class Butcher implements ModInitializer {
 		ModEntityTags.registerEntityTags();
 		ModDamageTypes.registerdamagetypes();
 		ModEffects.registerEffects();
+		ModParticles.registerParticles();
 	}
+
+
 
 	public static Identifier id(String path) {
 		return Identifier.of(MOD_ID, path);

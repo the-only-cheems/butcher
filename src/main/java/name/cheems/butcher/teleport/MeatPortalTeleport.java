@@ -1,6 +1,7 @@
 package name.cheems.butcher.teleport;
 
 import name.cheems.butcher.Butcher;
+import name.cheems.butcher.particle.ModParticles;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -212,20 +213,20 @@ public class MeatPortalTeleport {
                     z,
                     8,
                     0.35,
-                    0.1,
+                    0.25,
                     0.35,
                     0.05
             );
             wololo.spawnParticles(
-                    ParticleTypes.CRIMSON_SPORE,
+                    ModParticles.BLOOD_PARTICLE,
                     x,
                     y,
                     z,
-                    2,
-                    0.25,
+                    10,
+                    0.2,
                     0.1,
-                    0.25,
-                    0.01
+                    0.2,
+                    0
             );
         }
 
@@ -248,15 +249,15 @@ public class MeatPortalTeleport {
                     0.05
             );
             wololo.spawnParticles(
-                    ParticleTypes.CRIMSON_SPORE,
+                    ModParticles.BLOOD_PARTICLE,
                     x,
                     y,
                     z,
-                    2,
-                    0.25,
+                    10,
+                    0.2,
                     0.1,
-                    0.25,
-                    0.01
+                    0.2,
+                    0
             );
         }
 

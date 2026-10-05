@@ -55,6 +55,14 @@ public class RazorItem extends Item {
 
     @Override
     public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
+        return true;
+    }
+
+    @Override
+    public void postDamageEntity(ItemStack stack, LivingEntity target, LivingEntity attacker) {
+        stack.damage(1, attacker, EquipmentSlot.MAINHAND);
+
+
 
         target.addStatusEffect(new StatusEffectInstance(ModEffects.BLEED,
                 40,
@@ -62,14 +70,6 @@ public class RazorItem extends Item {
                 false,
                 false,
                 true));
-
-
-        return true;
-    }
-
-    @Override
-    public void postDamageEntity(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        stack.damage(1, attacker, EquipmentSlot.MAINHAND);
 
         if (target.getType().isIn(ModEntityTags.CAN_BE_BUTCHERED)) {
             target.dropItem(ModItems.MYSTERY_MEAT, 1);
