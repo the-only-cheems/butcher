@@ -1,5 +1,6 @@
 package name.cheems.butcher.fluid;
 
+import name.cheems.butcher.particle.BloodParticle;
 import name.cheems.butcher.particle.ModParticles;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -111,8 +112,9 @@ public abstract class BloodFluid extends FlowableFluid {
                         SoundEvents.BLOCK_WATER_AMBIENT, SoundCategory.BLOCKS, random.nextFloat() * 0.25F + 0.75F,
                         random.nextFloat() + 0.5F, true);
             }
-        } else if (random.nextInt(10) == 0) {
-            world.addParticle(ParticleTypes.UNDERWATER, (double)pos.getX() + random.nextDouble(), (double)pos.getY() + random.nextDouble(),
+        }
+        else if (random.nextInt(10) == 0) {
+            world.addParticle(ModParticles.BLOOD_PARTICLE, (double)pos.getX() + random.nextDouble(), (double)pos.getY() + random.nextDouble(),
                     (double)pos.getZ() + random.nextDouble(), 0.0, 0.0, 0.0);
         }
 

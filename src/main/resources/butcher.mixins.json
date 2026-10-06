@@ -3,7 +3,8 @@
 	"package": "name.cheems.butcher.mixin",
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
-		"ExampleMixin"
+		"ExampleMixin",
+		"PointedDripstoneBlockMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
