@@ -3,6 +3,7 @@ package name.cheems.butcher;
 import name.cheems.butcher.block.ModBlocks;
 import name.cheems.butcher.damage.ModDamageTypes;
 import name.cheems.butcher.effect.ModEffects;
+import name.cheems.butcher.fluid.ModFluids;
 import name.cheems.butcher.item.ModItemGroups;
 import name.cheems.butcher.item.ModItems;
 import name.cheems.butcher.particle.ModParticles;
@@ -33,6 +34,7 @@ public class Butcher implements ModInitializer {
 		ModEffects.registerEffects();
 		ModParticles.registerParticles();
 		ModSounds.registerSounds();
+		ModFluids.registerModFluids();
 	}
 
 

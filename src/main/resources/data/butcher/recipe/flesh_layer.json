@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "xxx"
+  ],
+  "key": {
+    "x": {
+      "item": "butcher:mystery_meat"
+    }
+  },
+  "result": {
+    "id": "butcher:flesh_layer",
+    "count": 3
+  }
+}

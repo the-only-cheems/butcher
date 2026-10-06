@@ -2,6 +2,7 @@ package name.cheems.butcher.item;
 
 import name.cheems.butcher.Butcher;
 import name.cheems.butcher.block.ModBlocks;
+import name.cheems.butcher.fluid.ModFluids;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
@@ -26,6 +27,7 @@ public class ModItemGroups {
 
                         entries.add(ModItems.RAZOR);
                         entries.add(ModItems.CLEAVER);
+                        entries.add(ModFluids.BLOOD_BUCKET);
 
                     }).build());
 
