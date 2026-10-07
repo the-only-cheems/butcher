@@ -1,10 +1,9 @@
 package name.cheems.butcher.fluid;
 
 import name.cheems.butcher.Butcher;
-import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.FluidBlock;
+import name.cheems.butcher.block.ModBlocks;
+import net.fabricmc.fabric.api.transfer.v1.fluid.CauldronFluidContent;
+import net.minecraft.block.*;
 import net.minecraft.fluid.FlowableFluid;
 import net.minecraft.item.BucketItem;
 import net.minecraft.item.Item;
@@ -27,5 +26,7 @@ public class ModFluids {
 
         BLOOD_BLOCK = Registry.register(Registries.BLOCK, Identifier.of(Butcher.MOD_ID, "blood_block"), new FluidBlock(ModFluids.STILL_BLOOD, AbstractBlock.Settings.copy(Blocks.WATER)));
         BLOOD_BUCKET = Registry.register(Registries.ITEM, Identifier.of(Butcher.MOD_ID, "blood_bucket"), new BucketItem(ModFluids.STILL_BLOOD, new Item.Settings().recipeRemainder(Items.BUCKET).maxCount(1)));
+
+        CauldronFluidContent.registerCauldron(ModBlocks.BLOOD_CAULDRON_BLOCK, ModFluids.STILL_BLOOD, 333, LeveledCauldronBlock.LEVEL);
     }
 }

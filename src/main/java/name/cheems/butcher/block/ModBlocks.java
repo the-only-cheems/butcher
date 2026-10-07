@@ -5,11 +5,8 @@ import name.cheems.butcher.block.custom.FleshLayerBlock;
 import name.cheems.butcher.block.custom.MeatPortalBlock;
 import name.cheems.butcher.sound.ModSounds;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
-import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.Block;
+import net.minecraft.block.*;
 import name.cheems.butcher.Butcher;
-import net.minecraft.block.FallingBlock;
-import net.minecraft.block.SnowBlock;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
@@ -34,6 +31,9 @@ public class ModBlocks {
 
     public static final Block FLESH_LAYER = registerBlock("flesh_layer",
             new FleshLayerBlock(AbstractBlock.Settings.create().strength(0.5f).sounds(ModSounds.FLESH_BLOCK_SOUNDS)));
+
+    public static final Block BLOOD_CAULDRON_BLOCK = registerBlock("blood_cauldron",
+            new BloodCauldronBlock(AbstractBlock.Settings.create()));
 
     private static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);

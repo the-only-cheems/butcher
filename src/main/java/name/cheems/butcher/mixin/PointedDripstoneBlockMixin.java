@@ -1,12 +1,15 @@
 package name.cheems.butcher.mixin;
 
+import name.cheems.butcher.Butcher;
 import name.cheems.butcher.fluid.ModFluids;
 import name.cheems.butcher.particle.ModParticles;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.PointedDripstoneBlock;
 import net.minecraft.fluid.Fluid;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -21,13 +24,7 @@ public class PointedDripstoneBlockMixin {
             at = @At("HEAD"),
             cancellable = true
     )
-    private static void butcher$customDripParticle(
-            World world,
-            BlockPos pos,
-            BlockState state,
-            Fluid fluid,
-            CallbackInfo ci
-    ) {
+    private static void butcher$customDripParticle(World world, BlockPos pos, BlockState state, Fluid fluid, CallbackInfo ci) {
         if (fluid == ModFluids.STILL_BLOOD) {
 
             Vec3d offset = state.getModelOffset(world, pos);
@@ -43,8 +40,7 @@ public class PointedDripstoneBlockMixin {
                     z,
                     0.0,
                     0.0,
-                    0.0
-            );
+                    0.0);
 
             // Stop vanilla from spawning the water/lava particle
             ci.cancel();
