@@ -5,8 +5,7 @@
 	"mixins": [
 		"ExampleMixin",
 		"PointedDripstoneBlockMixin",
-		"EntityMixin",
-		"PlayerEntityMixin"
+		"EntityMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
