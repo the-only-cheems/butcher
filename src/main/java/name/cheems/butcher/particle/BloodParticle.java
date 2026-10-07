@@ -1,6 +1,5 @@
 package name.cheems.butcher.particle;
 
-import name.cheems.butcher.Butcher;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.particle.*;

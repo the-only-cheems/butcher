@@ -27,11 +27,11 @@ public abstract class EntityMixin {
             for (int y = minPos.getY(); y <= maxPos.getY(); y++) {
                 for (int z = minPos.getZ(); z <= maxPos.getZ(); z++) {
 
-                    FluidState fluidState = entity.getWorld()
-                            .getFluidState(new BlockPos(x, y, z));
+                    FluidState fluidState = entity.getWorld().getFluidState(new BlockPos(x, y, z));
 
-                    if (fluidState.isOf(ModFluids.STILL_BLOOD)
-                            || fluidState.isOf(ModFluids.FLOWING_BLOOD)) {
+                    if (fluidState.isOf(ModFluids.STILL_BLOOD) || fluidState.isOf(ModFluids.FLOWING_BLOOD)) {
+
+                        ModParticles.spawnBloodSplashParticles(entity);
 
                         entity.getWorld().addParticle(
                                 ModParticles.BLOOD_PARTICLE,
@@ -40,10 +40,10 @@ public abstract class EntityMixin {
                                 entity.getZ(),
                                 0.0,
                                 0.0,
-                                0.0
-                        );
+                                0.0);
 
                         ci.cancel();
+
                         return;
                     }
                 }
