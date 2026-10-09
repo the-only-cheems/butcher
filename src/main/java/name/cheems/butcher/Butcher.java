@@ -2,6 +2,7 @@ package name.cheems.butcher;
 
 import name.cheems.butcher.block.ModBlocks;
 import name.cheems.butcher.block.ModCauldronBehaviours;
+import name.cheems.butcher.block.entity.ModBlockEntities;
 import name.cheems.butcher.damage.ModDamageTypes;
 import name.cheems.butcher.effect.ModEffects;
 import name.cheems.butcher.fluid.ModFluids;
@@ -37,6 +38,7 @@ public class Butcher implements ModInitializer {
 		ModParticles.registerParticles();
 		ModSounds.registerSounds();
 		ModCauldronBehaviours.registerModCauldronBehaviours();
+		ModBlockEntities.registerBlockEntities();
 	}
 
 

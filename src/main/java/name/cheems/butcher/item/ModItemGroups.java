@@ -27,6 +27,7 @@ public class ModItemGroups {
 
                         entries.add(ModItems.RAZOR);
                         entries.add(ModItems.CLEAVER);
+                        entries.add(ModBlocks.MEAT_GRINDER);
                         entries.add(ModFluids.BLOOD_BUCKET);
 
                     }).build());

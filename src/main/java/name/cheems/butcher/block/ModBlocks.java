@@ -2,6 +2,7 @@ package name.cheems.butcher.block;
 
 import com.mojang.serialization.MapCodec;
 import name.cheems.butcher.block.custom.FleshLayerBlock;
+import name.cheems.butcher.block.custom.MeatGrinderBlock;
 import name.cheems.butcher.block.custom.MeatPortalBlock;
 import name.cheems.butcher.sound.ModSounds;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
@@ -34,6 +35,9 @@ public class ModBlocks {
 
     public static final Block BLOOD_CAULDRON_BLOCK = registerBlock("blood_cauldron",
             new BloodCauldronBlock(AbstractBlock.Settings.create()));
+
+    public static final Block MEAT_GRINDER = registerBlock("meat_grinder",
+            new MeatGrinderBlock(AbstractBlock.Settings.create().nonOpaque()));
 
     private static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);
