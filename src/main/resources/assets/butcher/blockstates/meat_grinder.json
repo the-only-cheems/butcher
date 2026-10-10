@@ -1,7 +1,20 @@
 {
   "variants": {
-    "": {
-      "model": "butcher:block/meat_grinder"
+    "facing=north": {
+      "model": "butcher:block/meat_grinder",
+      "y": 0
+    },
+    "facing=east": {
+      "model": "butcher:block/meat_grinder",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "butcher:block/meat_grinder",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "butcher:block/meat_grinder",
+      "y": 270
     }
   }
 }

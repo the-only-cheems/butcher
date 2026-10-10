@@ -2,8 +2,9 @@
 	"format_version": "26.3",
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "butcher:block/meat_grinder",
-		"particle": "butcher:block/meat_grinder"
+		"0": "butcher:block/meat_grinder_active",
+		"1": "butcher:block/meat",
+		"particle": "butcher:block/meat_grinder_active"
 	},
 	"elements": [
 		{
@@ -95,6 +96,32 @@
 				"up": {"uv": [6.5, 11.25, 7, 15.25], "texture": "#0"},
 				"down": {"uv": [7, 11.25, 7.5, 15.25], "texture": "#0"}
 			}
+		},
+		{
+			"from": [7, 9, -3],
+			"to": [9, 10, 0],
+			"rotation": {"angle": 0, "axis": "y", "origin": [7, 9, -3]},
+			"faces": {
+				"north": {"uv": [5, 2, 7, 3], "texture": "#1"},
+				"east": {"uv": [4, 0, 7, 1], "texture": "#1"},
+				"south": {"uv": [5, 3, 7, 4], "texture": "#1"},
+				"west": {"uv": [4, 1, 7, 2], "texture": "#1"},
+				"up": {"uv": [0, 0, 2, 3], "texture": "#1"},
+				"down": {"uv": [2, 0, 4, 3], "texture": "#1"}
+			}
+		},
+		{
+			"from": [7, 7, -3],
+			"to": [9, 9, -2],
+			"rotation": {"angle": 0, "axis": "y", "origin": [7, 7, -3]},
+			"faces": {
+				"north": {"uv": [0, 3, 2, 5], "texture": "#1"},
+				"east": {"uv": [4, 2, 5, 4], "texture": "#1"},
+				"south": {"uv": [2, 3, 4, 5], "texture": "#1"},
+				"west": {"uv": [4, 4, 5, 6], "texture": "#1"},
+				"up": {"uv": [0, 5, 2, 6], "texture": "#1"},
+				"down": {"uv": [2, 5, 4, 6], "texture": "#1"}
+			}
 		}
 	],
 	"display": {
@@ -147,7 +174,14 @@
 				},
 				4,
 				5,
-				6
+				6,
+				{
+					"name": "MEAT",
+					"origin": [8, 8, 8],
+					"scope": 0,
+					"color": 0,
+					"children": [7, 8]
+				}
 			]
 		}
 	]
