@@ -4,19 +4,20 @@ import com.mojang.serialization.MapCodec;
 import name.cheems.butcher.block.entity.custom.MeatGrinderEntity;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
+import net.minecraft.item.ItemStack;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.state.property.Properties;
-import net.minecraft.util.BlockMirror;
-import net.minecraft.util.BlockRotation;
-import net.minecraft.util.ItemScatterer;
+import net.minecraft.util.*;
+import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-public class MeatGrinderBlock extends BlockWithEntity implements BlockEntityProvider {
+public class MeatGrinderBlock extends BlockWithEntity implements BlockEntityProvider{
     public static final MapCodec<MeatGrinderBlock> CODEC = MeatGrinderBlock.createCodec(MeatGrinderBlock::new);
 
     public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
@@ -59,6 +60,16 @@ public class MeatGrinderBlock extends BlockWithEntity implements BlockEntityProv
     @Override
     protected BlockRenderType getRenderType(BlockState state) {
         return BlockRenderType.MODEL;
+    }
+
+    @Override
+    protected ItemActionResult onUseWithItem(ItemStack stack, BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+
+        if (world.getBlockEntity(pos) instanceof MeatGrinderEntity meatGrinderEntity && !world.isClient()){
+            player.openHandledScreen(meatGrinderEntity);
+        }
+
+        return ItemActionResult.SUCCESS;
     }
 
     @Override

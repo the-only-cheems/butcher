@@ -3,11 +3,14 @@ package name.cheems.butcher;
 import name.cheems.butcher.fluid.ModFluids;
 import name.cheems.butcher.particle.BloodParticle;
 import name.cheems.butcher.particle.ModParticles;
+import name.cheems.butcher.screen.ModScreenHandlers;
+import name.cheems.butcher.screen.custom.MeatGrinderScreen;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.client.render.fluid.v1.FluidRenderHandlerRegistry;
 import net.fabricmc.fabric.api.client.render.fluid.v1.SimpleFluidRenderHandler;
+import net.minecraft.client.gui.screen.ingame.HandledScreens;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.util.Identifier;
 
@@ -27,6 +30,8 @@ public class ButcherClient implements ClientModInitializer {
 
         BlockRenderLayerMap.INSTANCE.putFluids(RenderLayer.getTranslucent(),
                 ModFluids.STILL_BLOOD, ModFluids.FLOWING_BLOOD);
+
+        HandledScreens.register(ModScreenHandlers.MEAT_GRINDER_SCREEN_HANDLER, MeatGrinderScreen::new);
 
     }
 }

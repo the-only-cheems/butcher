@@ -1,6 +1,5 @@
 package name.cheems.butcher.fluid;
 
-import name.cheems.butcher.particle.BloodParticle;
 import name.cheems.butcher.particle.ModParticles;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -10,7 +9,6 @@ import net.minecraft.fluid.Fluid;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.item.Item;
 import net.minecraft.particle.ParticleEffect;
-import net.minecraft.particle.ParticleTypes;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;

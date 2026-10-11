@@ -9,6 +9,7 @@ import name.cheems.butcher.fluid.ModFluids;
 import name.cheems.butcher.item.ModItemGroups;
 import name.cheems.butcher.item.ModItems;
 import name.cheems.butcher.particle.ModParticles;
+import name.cheems.butcher.screen.ModScreenHandlers;
 import name.cheems.butcher.sound.ModSounds;
 import name.cheems.butcher.teleport.MeatPortalTeleport;
 import net.fabricmc.api.ModInitializer;
@@ -39,6 +40,7 @@ public class Butcher implements ModInitializer {
 		ModSounds.registerSounds();
 		ModCauldronBehaviours.registerModCauldronBehaviours();
 		ModBlockEntities.registerBlockEntities();
+		ModScreenHandlers.registerScreenHandlers();
 	}
 
 
