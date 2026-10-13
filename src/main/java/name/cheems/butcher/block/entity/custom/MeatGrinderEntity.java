@@ -3,6 +3,7 @@ package name.cheems.butcher.block.entity.custom;
 import name.cheems.butcher.block.custom.MeatGrinderBlock;
 import name.cheems.butcher.block.entity.ImplementedInventory;
 import name.cheems.butcher.block.entity.ModBlockEntities;
+import name.cheems.butcher.fluid.ModFluids;
 import name.cheems.butcher.item.ModItems;
 import name.cheems.butcher.recipe.MeatGrinderRecipeInput;
 import name.cheems.butcher.recipe.MeatGrinderRecipie;
@@ -15,8 +16,8 @@ import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventories;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.listener.ClientPlayPacketListener;
 import net.minecraft.network.packet.Packet;
@@ -35,10 +36,12 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Optional;
 
 public class MeatGrinderEntity extends BlockEntity implements ImplementedInventory, ExtendedScreenHandlerFactory<BlockPos> {
-    private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(2, ItemStack.EMPTY);
+    private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(4, ItemStack.EMPTY);
 
     private static final int INPUT_SLOT = 0;
-    private static final int OUTPUT_SLOT = 1;
+    private static final int BUCKET_INPUT_SLOT = 1;
+    private static final int OUTPUT_SLOT = 2;
+    private static final int BLOOD_OUTPUT_SLOT = 3;
 
     protected final PropertyDelegate propertyDelegate;
     private int progress = 0;
@@ -118,13 +121,36 @@ public class MeatGrinderEntity extends BlockEntity implements ImplementedInvento
         this.maxProgress = 72;
     }
 
+    private void addToOutputSlot(int slot, ItemStack output) {
+        ItemStack currentStack = getStack(slot);
+
+        if (currentStack.isEmpty()) {
+            setStack(slot, output);
+        } else {
+            currentStack.increment(output.getCount());
+        }
+    }
+
     private void craftItem() {
-        Optional<RecipeEntry<MeatGrinderRecipie>> recipe = getCurrentRecipe();
+        Optional<RecipeEntry<MeatGrinderRecipie>> recipe =
+                getCurrentRecipe();
+
+        if (recipe.isEmpty()) {
+            return;
+        }
 
         ItemStack output = recipe.get().value().output();
-        this.removeStack(INPUT_SLOT, 1);
-        this.setStack(OUTPUT_SLOT, new ItemStack(output.getItem(),
-                this.getStack(OUTPUT_SLOT).getCount() + output.getCount()));
+
+        removeStack(INPUT_SLOT, 1);
+        addToOutputSlot(OUTPUT_SLOT, output.copy());
+
+        if (getStack(BUCKET_INPUT_SLOT).isOf(Items.BUCKET)) {
+            ItemStack bloodBucket =
+                    new ItemStack(ModFluids.BLOOD_BUCKET);
+
+            removeStack(BUCKET_INPUT_SLOT, 1);
+            addToOutputSlot(BLOOD_OUTPUT_SLOT, bloodBucket);
+        }
     }
 
     private boolean hasCraftingFinished() {
@@ -143,7 +169,24 @@ public class MeatGrinderEntity extends BlockEntity implements ImplementedInvento
 
         ItemStack output = recipe.get().value().output();
 
-        return canInsertAmountIntoOutputSlot(output.getCount()) && canInsertItemIntoOutputSlot(output);
+        if (!canInsertItemIntoSlot(OUTPUT_SLOT, output)
+                || !canInsertItemIntoSlot(OUTPUT_SLOT, output)) {
+            return false;
+        }
+
+        // If an empty bucket is present, Blood Bucket must fit too.
+        if (getStack(BUCKET_INPUT_SLOT).isOf(Items.BUCKET)) {
+            ItemStack bloodBucket =
+                    new ItemStack(ModFluids.BLOOD_BUCKET);
+
+            if (!canInsertItemIntoSlot(BLOOD_OUTPUT_SLOT, bloodBucket)
+                    || !canInsertItemIntoSlot(
+                    BLOOD_OUTPUT_SLOT, bloodBucket)) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     private Optional<RecipeEntry<MeatGrinderRecipie>> getCurrentRecipe() {
@@ -151,15 +194,29 @@ public class MeatGrinderEntity extends BlockEntity implements ImplementedInvento
                 .getFirstMatch(ModRecipies.MEAT_GRINDER_TYPE, new MeatGrinderRecipeInput(inventory.get(INPUT_SLOT)), this.getWorld());
     }
 
-    private boolean canInsertItemIntoOutputSlot(ItemStack output) {
-        return this.getStack(OUTPUT_SLOT).isEmpty() || this.getStack(OUTPUT_SLOT).getItem() == output.getItem();
+    private boolean canInsertItemIntoSlot(
+            int slot, ItemStack output) {
+
+        ItemStack currentStack = getStack(slot);
+
+        return currentStack.isEmpty()
+                || ItemStack.areItemsAndComponentsEqual(
+                currentStack, output);
     }
 
-    private boolean canInsertAmountIntoOutputSlot(int count) {
-        int maxCount = this.getStack(OUTPUT_SLOT).isEmpty() ? 64 : this.getStack(OUTPUT_SLOT).getMaxCount();
-        int currentCount = this.getStack(OUTPUT_SLOT).getCount();
+    private boolean canInsertAmountIntoSlot(
+            int slot, ItemStack output) {
 
-        return maxCount >= currentCount + count;
+        ItemStack currentStack = getStack(slot);
+
+        int currentCount = currentStack.isEmpty()
+                ? 0 : currentStack.getCount();
+
+        int maxCount = currentStack.isEmpty()
+                ? output.getMaxCount()
+                : currentStack.getMaxCount();
+
+        return currentCount + output.getCount() <= maxCount;
     }
 
     @Override

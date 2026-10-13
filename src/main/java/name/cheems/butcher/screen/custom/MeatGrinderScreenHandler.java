@@ -29,8 +29,13 @@ public class MeatGrinderScreenHandler extends ScreenHandler {
         this.blockEntity = ((MeatGrinderEntity) blockEntity);
         this.propertyDelegate = arrayPropertyDelegate;
 
-        this.addSlot(new Slot(inventory, 0,54,34));
-        this.addSlot(new Slot(inventory, 1,104,34));
+        // Input slots
+        this.addSlot(new Slot(inventory, 0, 54, 19));
+        this.addSlot(new Slot(inventory, 1, 54, 51));
+
+        // Output slots
+        this.addSlot(new Slot(inventory, 2, 104, 19));
+        this.addSlot(new Slot(inventory, 3, 104, 50));
 
         addPlayerInventory(playerInventory);
         addPlayerHotbar(playerInventory);
