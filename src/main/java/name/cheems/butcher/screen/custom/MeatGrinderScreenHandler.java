@@ -1,5 +1,6 @@
 package name.cheems.butcher.screen.custom;
 
+import name.cheems.butcher.block.entity.custom.MeatGrinderEntity;
 import name.cheems.butcher.screen.ModScreenHandlers;
 import net.minecraft.block.Block;
 import net.minecraft.block.entity.BlockEntity;
@@ -7,25 +8,50 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.screen.ArrayPropertyDelegate;
+import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.slot.Slot;
 import net.minecraft.util.math.BlockPos;
 
 public class MeatGrinderScreenHandler extends ScreenHandler {
     private final Inventory inventory;
+    private final PropertyDelegate propertyDelegate;
+    public final MeatGrinderEntity blockEntity;
 
     public MeatGrinderScreenHandler(int syncId, PlayerInventory playerInventory, BlockPos pos) {
-        this(syncId, playerInventory, playerInventory.player.getWorld().getBlockEntity(pos));
+        this(syncId, playerInventory, playerInventory.player.getWorld().getBlockEntity(pos), new ArrayPropertyDelegate(2));
     }
 
-    public MeatGrinderScreenHandler(int syncId, PlayerInventory playerInventory, BlockEntity blockEntity) {
+    public MeatGrinderScreenHandler(int syncId, PlayerInventory playerInventory, BlockEntity blockEntity, PropertyDelegate arrayPropertyDelegate) {
         super(ModScreenHandlers.MEAT_GRINDER_SCREEN_HANDLER, syncId);
         this.inventory = ((Inventory) blockEntity);
+        this.blockEntity = ((MeatGrinderEntity) blockEntity);
+        this.propertyDelegate = arrayPropertyDelegate;
 
-        this.addSlot(new Slot(inventory, 0,80,35));
+        this.addSlot(new Slot(inventory, 0,54,34));
+        this.addSlot(new Slot(inventory, 1,104,34));
 
         addPlayerInventory(playerInventory);
         addPlayerHotbar(playerInventory);
+
+        addProperties(arrayPropertyDelegate);
+    }
+
+    public boolean isCrafting() {
+        return propertyDelegate.get(0) > 0;
+    }
+
+    public int getScaledArrowProgress() {
+        int progress = this.propertyDelegate.get(0);
+        int maxProgress = this.propertyDelegate.get(1); // Max Progress
+        int arrowPixelSize = 24; // This is the width in pixels of your arrow
+
+        System.out.println(
+                "Progress: " + progress + " / " + maxProgress
+        );
+
+        return maxProgress != 0 && progress != 0 ? progress * arrowPixelSize / maxProgress : 0;
     }
 
     @Override

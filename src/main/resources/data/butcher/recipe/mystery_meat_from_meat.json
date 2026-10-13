@@ -1,0 +1,9 @@
+{
+  "type": "butcher:meat_grinder",
+  "ingredient": {
+    "tag": "butcher:meats"
+  },
+  "result": {
+    "id": "butcher:mystery_meat"
+  }
+}
