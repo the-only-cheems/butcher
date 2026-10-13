@@ -9,6 +9,7 @@ import name.cheems.butcher.recipe.MeatGrinderRecipie;
 import name.cheems.butcher.recipe.ModRecipies;
 import name.cheems.butcher.screen.custom.MeatGrinderScreenHandler;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -93,11 +94,21 @@ public class MeatGrinderEntity extends BlockEntity implements ImplementedInvento
     }
 
     public void tick(World world, BlockPos pos, BlockState state) {
-        if(hasRecipe()) {
+        boolean crafting = hasRecipe();
+
+        if (state.get(MeatGrinderBlock.ACTIVE) != crafting) {
+            world.setBlockState(
+                    pos,
+                    state.with(MeatGrinderBlock.ACTIVE, crafting),
+                    Block.NOTIFY_ALL
+            );
+        }
+
+        if (crafting) {
             increaseCraftingProgress();
             markDirty(world, pos, state);
 
-            if(hasCraftingFinished()) {
+            if (hasCraftingFinished()) {
                 craftItem();
                 resetProgress();
             }

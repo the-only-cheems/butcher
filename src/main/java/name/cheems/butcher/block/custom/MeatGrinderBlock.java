@@ -12,6 +12,7 @@ import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.state.StateManager;
+import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.*;
@@ -25,10 +26,11 @@ public class MeatGrinderBlock extends BlockWithEntity implements BlockEntityProv
     public static final MapCodec<MeatGrinderBlock> CODEC = MeatGrinderBlock.createCodec(MeatGrinderBlock::new);
 
     public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
+    public static final BooleanProperty ACTIVE = Properties.LIT;
 
     public MeatGrinderBlock(Settings settings) {
         super(settings);
-        setDefaultState(getStateManager().getDefaultState().with(FACING, Direction.NORTH));
+        setDefaultState(getStateManager().getDefaultState().with(FACING, Direction.NORTH).with(ACTIVE, false));
     }
 
     @Override
@@ -38,7 +40,7 @@ public class MeatGrinderBlock extends BlockWithEntity implements BlockEntityProv
 
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(FACING);
+        builder.add(FACING, ACTIVE);
     }
 
     @Override
