@@ -97,11 +97,7 @@ public class MeatGrinderEntity extends BlockEntity implements ImplementedInvento
         boolean crafting = hasRecipe();
 
         if (state.get(MeatGrinderBlock.ACTIVE) != crafting) {
-            world.setBlockState(
-                    pos,
-                    state.with(MeatGrinderBlock.ACTIVE, crafting),
-                    Block.NOTIFY_ALL
-            );
+            world.setBlockState(pos, state.with(MeatGrinderBlock.ACTIVE, crafting), Block.NOTIFY_ALL);
         }
 
         if (crafting) {
