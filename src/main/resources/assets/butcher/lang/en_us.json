@@ -15,6 +15,7 @@
   "itemgroup.butcher.butcher_items": "Butcher Items",
 
   "effect.butcher.bleed": "Bleed",
+  "effect.butcher.itching": "Itching",
 
   "death.attack.bleed": "%1$s bled out",
   "death.attack.bleed.player": "%1$s bled out while fighting %2$s",
