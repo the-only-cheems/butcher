@@ -36,7 +36,7 @@ public class ItchingEffect extends StatusEffect {
 
     @Override
     public boolean canApplyUpdateEffect(int duration, int amplifier) {
-        int interval = Math.max(1, 60 - (amplifier * 5));
+        int interval = Math.max(1, 100 - (amplifier * 5));
         return duration % interval == 0;
     }
 }

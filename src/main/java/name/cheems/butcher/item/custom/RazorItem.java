@@ -1,5 +1,6 @@
 package name.cheems.butcher.item.custom;
 
+import name.cheems.butcher.CorruptionManager;
 import name.cheems.butcher.ModEntityTags;
 import name.cheems.butcher.effect.ModEffects;
 import name.cheems.butcher.item.ModItems;
@@ -10,6 +11,7 @@ import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
@@ -17,6 +19,8 @@ import net.minecraft.util.UseAction;
 import net.minecraft.world.World;
 
 import net.minecraft.util.math.Vec3d;
+
+import java.util.Objects;
 
 public class RazorItem extends Item {
     public RazorItem(Settings settings) {
@@ -26,12 +30,28 @@ public class RazorItem extends Item {
 
     private static final int MAX_USE_TIME = 40; // 2 seconds
 
+    private boolean canUseRazor(PlayerEntity player) {
+        if (!(player instanceof ServerPlayerEntity serverPlayer)) {
+            return true;
+        }
+
+        CorruptionManager corruption = CorruptionManager.get(serverPlayer.getServer());
+
+        return corruption.getStage(serverPlayer.getUuid()) >= 2;
+    }
+
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
+
+        if (world instanceof ServerWorld && !canUseRazor(user)) {
+            user.sendMessage(net.minecraft.text.Text.literal("You do not feel an urge to do this."), true);
+
+            return TypedActionResult.fail(user.getStackInHand(hand));
+        }
+
         user.setCurrentHand(hand);
 
         if (world instanceof ServerWorld serverWorld) {
-
             Vec3d look = user.getRotationVec(1.0f);
 
             serverWorld.spawnParticles(
@@ -40,7 +60,9 @@ public class RazorItem extends Item {
                     user.getY() + 1,
                     user.getZ(),
                     10,
-                    look.getX() / 2, look.getY(), look.getZ() / 2,
+                    look.getX() / 2,
+                    look.getY(),
+                    look.getZ() / 2,
                     0.0
             );
         }

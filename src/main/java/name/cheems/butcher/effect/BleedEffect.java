@@ -17,14 +17,7 @@ public class BleedEffect extends StatusEffect {
 
     @Override
     public boolean applyUpdateEffect(LivingEntity entity, int amplifier) {
-        DamageSource source = new DamageSource(
-                entity.getWorld()
-                        .getRegistryManager()
-                        .getWrapperOrThrow(RegistryKeys.DAMAGE_TYPE)
-                        .getOrThrow(ModDamageTypes.BLEED)
-        );
-
-
+        DamageSource source = new DamageSource(entity.getWorld().getRegistryManager().getWrapperOrThrow(RegistryKeys.DAMAGE_TYPE).getOrThrow(ModDamageTypes.BLEED));
 
         //This should (DOES) get rid of KB
         Vec3d oldVelocity = entity.getVelocity();

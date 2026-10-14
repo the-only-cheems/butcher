@@ -15,6 +15,9 @@ import name.cheems.butcher.sound.ModSounds;
 import name.cheems.butcher.teleport.MeatPortalTeleport;
 import net.fabricmc.api.ModInitializer;
 
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Identifier;
 
 import org.slf4j.Logger;
@@ -43,6 +46,23 @@ public class Butcher implements ModInitializer {
 		ModBlockEntities.registerBlockEntities();
 		ModScreenHandlers.registerScreenHandlers();
 		ModRecipies.registerRecipes();
+
+		//Freaky Deaky Corruption Shit
+		CorruptionSync.registerCommon();
+
+		ServerTickEvents.END_SERVER_TICK.register(server -> {
+			CorruptionManager manager = CorruptionManager.get(server);
+
+			for (ServerPlayerEntity player : server.getPlayerManager().getPlayerList()) {
+				manager.tickPlayer(player);
+			}
+		});
+
+		ServerPlayConnectionEvents.DISCONNECT.register(
+				(handler, server) -> {
+					CorruptionManager.get(server).onPlayerLeave(handler.player.getUuid());
+				}
+		);
 	}
 
 

@@ -3,6 +3,7 @@ package name.cheems.butcher.teleport;
 import name.cheems.butcher.Butcher;
 import name.cheems.butcher.particle.ModParticles;
 import name.cheems.butcher.sound.ModSounds;
+import name.cheems.butcher.CorruptionManager;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -14,6 +15,7 @@ import net.minecraft.util.math.BlockPos;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Objects;
 
 public class MeatPortalTeleport {
 
@@ -46,12 +48,13 @@ public class MeatPortalTeleport {
         });
     }
 
-    public static void start(
-            ServerPlayerEntity player,
-            BlockPos entrance,
-            BlockPos destination
-    )
-    {
+    public static void start(ServerPlayerEntity player, BlockPos entrance, BlockPos destination, CorruptionManager corruption) {
+        corruption.removeCorruption(player.getUuid(), 10);
+
+        player.sendMessage(net.minecraft.text.Text.literal("Your corruption has decreased by 20. Current corruption: "
+                + corruption.getCorruption(player.getUuid())), true);
+
+
         // Prevent multiple teleport animations at once.
         for (TeleportAnimation animation : ACTIVE_ANIMATIONS) {
             if (animation.player == player) {
@@ -59,21 +62,12 @@ public class MeatPortalTeleport {
             }
         }
 
-        ACTIVE_ANIMATIONS.add(
-                new TeleportAnimation(
-                        player,
-                        entrance,
-                        destination
-                )
-        );
+        ACTIVE_ANIMATIONS.add(new TeleportAnimation(player, entrance, destination));
     }
 
     private static class TeleportAnimation {
 
         private final ServerPlayerEntity player;
-
-        private final BlockPos entrance;
-        private final BlockPos destination;
 
         private int tick = 0;
 
@@ -96,8 +90,6 @@ public class MeatPortalTeleport {
         )
         {
             this.player = player;
-            this.entrance = entrance;
-            this.destination = destination;
 
             this.entranceX = entrance.getX() + 0.5;
             this.entranceY = entrance.getY() + 1.0;

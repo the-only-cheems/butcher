@@ -1,5 +1,6 @@
 package name.cheems.butcher.block.custom;
 
+import name.cheems.butcher.CorruptionManager;
 import name.cheems.butcher.teleport.MeatPortalTeleport;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -11,6 +12,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.world.World;
+
+import java.util.Objects;
 
 public class MeatPortalBlock extends Block {
 
@@ -27,22 +30,13 @@ public class MeatPortalBlock extends Block {
                 .with(ACTIVE, false));
     }
 
-    //Adds the ACTIVE boolean to the block's possible states.
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         builder.add(ACTIVE);
     }
 
-    //Called when the block is placed.
-    //it waits 10 seconds before the first activation check.
     @Override
-    public void onPlaced(
-            World world,
-            BlockPos pos,
-            BlockState state,
-            net.minecraft.entity.LivingEntity placer,
-            net.minecraft.item.ItemStack itemStack
-    ) {
+    public void onPlaced(World world, BlockPos pos, BlockState state, net.minecraft.entity.LivingEntity placer, net.minecraft.item.ItemStack itemStack) {
         super.onPlaced(world, pos, state, placer, itemStack);
 
         if (!world.isClient()) {
@@ -51,40 +45,23 @@ public class MeatPortalBlock extends Block {
     }
 
     @Override
-    protected void scheduledTick(
-            BlockState state,
-            ServerWorld world,
-            BlockPos pos,
-            Random random
-    )
+    protected void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random)
     {
         BlockPos otherPortal = findOtherPortal(world, pos);
 
         if (otherPortal != null) {
 
-            world.setBlockState(
-                    pos,
-                    state.with(ACTIVE, true)
-            );
+            world.setBlockState(pos, state.with(ACTIVE, true));
 
             BlockState otherState = world.getBlockState(otherPortal);
 
-            if (otherState.isOf(this)) {
-                world.setBlockState(
-                        otherPortal,
-                        otherState.with(ACTIVE, true)
-                );
+            if (otherState.isOf(this)) {world.setBlockState(otherPortal, otherState.with(ACTIVE, true));
             }
         }
     }
 
     @Override
-    public void onSteppedOn(
-            World world,
-            BlockPos pos,
-            BlockState state,
-            Entity entity
-    )
+    public void onSteppedOn(World world, BlockPos pos, BlockState state, Entity entity)
     {
         super.onSteppedOn(world, pos, state, entity);
 
@@ -100,57 +77,42 @@ public class MeatPortalBlock extends Block {
             return;
         }
 
-        BlockPos otherPortal = findOtherPortal(world, pos);
+        CorruptionManager corruption = CorruptionManager.get(Objects.requireNonNull(entity.getServer()));
 
-        if (otherPortal == null) {
-            world.setBlockState(
-                    pos,
-                    state.with(ACTIVE, false)
-            );
+        int stage = corruption.getStage(entity.getUuid());
+
+        //This shouts at you, but it is wrong, without this it puts it in chat and looks shit
+        ServerPlayerEntity playerEntity = (ServerPlayerEntity) entity;
+
+        if (stage != 3) {
+            playerEntity.sendMessage(net.minecraft.text.Text.literal("You are not corrupted enough to enter."), true);
             return;
         }
 
-        MeatPortalTeleport.start(
-                player,
-                pos,
-                otherPortal
-        );
-        world.setBlockState(
-                pos,
-                state.with(ACTIVE, false)
-        );
+        BlockPos otherPortal = findOtherPortal(world, pos);
 
-        BlockState otherState =
-                world.getBlockState(otherPortal);
+        if (otherPortal == null) {
+            world.setBlockState(pos, state.with(ACTIVE, false));
+            return;
+        }
+
+        MeatPortalTeleport.start(player, pos, otherPortal, corruption);
+        world.setBlockState(pos, state.with(ACTIVE, false));
+
+        BlockState otherState = world.getBlockState(otherPortal);
 
         if (otherState.isOf(this)) {
-            world.setBlockState(
-                    otherPortal,
-                    otherState.with(ACTIVE, false)
-            );
+            world.setBlockState(otherPortal, otherState.with(ACTIVE, false));
         }
-        world.scheduleBlockTick(
-                pos,
-                this,
-                COOLDOWN_TICKS
-        );
+        world.scheduleBlockTick(pos, this, COOLDOWN_TICKS);
 
-        world.scheduleBlockTick(
-                otherPortal,
-                this,
-                COOLDOWN_TICKS
-        );
+        world.scheduleBlockTick(otherPortal, this, COOLDOWN_TICKS);
     }
 
 
     private BlockPos findOtherPortal(World world, BlockPos pos) {
 
-        for (BlockPos checkPos : BlockPos.iterateOutwards(
-                pos,
-                SEARCH_RADIUS,
-                SEARCH_RADIUS,
-                SEARCH_RADIUS
-        )) {
+        for (BlockPos checkPos : BlockPos.iterateOutwards(pos, SEARCH_RADIUS, SEARCH_RADIUS, SEARCH_RADIUS)) {
 
             //IMPORTANT DON'T DELETE
             if (checkPos.equals(pos)) {

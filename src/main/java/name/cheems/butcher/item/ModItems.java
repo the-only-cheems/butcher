@@ -2,6 +2,7 @@ package name.cheems.butcher.item;
 
 import name.cheems.butcher.Butcher;
 import name.cheems.butcher.item.custom.CleaverItem;
+import name.cheems.butcher.item.custom.CorruptedFoodItem;
 import name.cheems.butcher.item.custom.RazorItem;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
@@ -10,8 +11,8 @@ import net.minecraft.util.Identifier;
 
 public class ModItems {
 
-    public static final Item MYSTERY_MEAT = registerItem("mystery_meat", new Item(new Item.Settings().food(ModFoodComponents.MYSTERY_MEAT)));
-    public static final Item MYSTERY_MEAT_COOKED = registerItem("mystery_meat_cooked", new Item(new Item.Settings().food(ModFoodComponents.MYSTERY_MEAT_COOKED)));
+    public static final Item MYSTERY_MEAT = registerItem("mystery_meat", new CorruptedFoodItem(new Item.Settings().food(ModFoodComponents.MYSTERY_MEAT), 5));
+    public static final Item MYSTERY_MEAT_COOKED = registerItem("mystery_meat_cooked", new CorruptedFoodItem(new Item.Settings().food(ModFoodComponents.MYSTERY_MEAT_COOKED), 1));
     public static final Item RAZOR = registerItem("razor", new RazorItem(new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.IRON, 3, -2.4f))));
     public static final Item CLEAVER = registerItem("cleaver", new CleaverItem(new Item.Settings().attributeModifiers(AxeItem.createAttributeModifiers(ToolMaterials.IRON, 6, -3.1f))));
 
