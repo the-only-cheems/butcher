@@ -51,7 +51,7 @@ public class MeatPortalTeleport {
     public static void start(ServerPlayerEntity player, BlockPos entrance, BlockPos destination, CorruptionManager corruption) {
         corruption.removeCorruption(player.getUuid(), 10);
 
-        player.sendMessage(net.minecraft.text.Text.literal("Your corruption has decreased by 20. Current corruption: "
+        player.sendMessage(net.minecraft.text.Text.literal("Your corruption has decreased by 10. Current corruption: "
                 + corruption.getCorruption(player.getUuid())), true);
 
 

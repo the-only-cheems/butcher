@@ -15,7 +15,6 @@ public final class CorruptionHud {
     private static final Identifier STAGE_3 = Identifier.of(Butcher.MOD_ID, "textures/gui/corruption_stage_3.png");
 
     private static final int ICON_SIZE = 24;
-    private static final int MARGIN = 8;
 
     private CorruptionHud() {
     }
@@ -42,8 +41,11 @@ public final class CorruptionHud {
             return;
         }
 
-        int y = context.getScaledWindowHeight() - ICON_SIZE - MARGIN;
+        int hotbarLeft = (context.getScaledWindowWidth() - 182) / 2;
 
-        context.drawTexture(texture, MARGIN, y, 0.0F, 0.0F, ICON_SIZE, ICON_SIZE, ICON_SIZE, ICON_SIZE);
+        int x = hotbarLeft - ICON_SIZE - 8;
+        int y = context.getScaledWindowHeight() - 5 - ICON_SIZE;
+
+        context.drawTexture(texture, x, y, 0.0F, 0.0F, ICON_SIZE, ICON_SIZE, ICON_SIZE, ICON_SIZE);
     }
 }

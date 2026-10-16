@@ -3,6 +3,7 @@ package name.cheems.butcher;
 import name.cheems.butcher.block.ModBlocks;
 import name.cheems.butcher.block.ModCauldronBehaviours;
 import name.cheems.butcher.block.entity.ModBlockEntities;
+import name.cheems.butcher.commands.ModCommands;
 import name.cheems.butcher.damage.ModDamageTypes;
 import name.cheems.butcher.effect.ModEffects;
 import name.cheems.butcher.fluid.ModFluids;
@@ -46,6 +47,7 @@ public class Butcher implements ModInitializer {
 		ModBlockEntities.registerBlockEntities();
 		ModScreenHandlers.registerScreenHandlers();
 		ModRecipies.registerRecipes();
+		ModCommands.register();
 
 		//Freaky Deaky Corruption Shit
 		CorruptionSync.registerCommon();
@@ -64,8 +66,6 @@ public class Butcher implements ModInitializer {
 				}
 		);
 	}
-
-
 
 	public static Identifier id(String path) {
 		return Identifier.of(MOD_ID, path);

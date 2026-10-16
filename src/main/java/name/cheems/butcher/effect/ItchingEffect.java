@@ -13,20 +13,16 @@ public class ItchingEffect extends StatusEffect {
 
     @Override
     public boolean applyUpdateEffect(LivingEntity entity, int amplifier) {
-        if (entity instanceof PlayerEntity player) {
+        if (entity instanceof PlayerEntity player && !player.getWorld().isClient()) {
 
-            // Stupid maths I don't really understand but it workss
+            // Stupid maths I don't really understand but it works
             double angle = player.getRandom().nextDouble() * Math.PI * 2;
 
             Vec3d direction = new Vec3d(Math.cos(angle), 0, Math.sin(angle));
 
             double strength = 0.4;
 
-            player.setVelocity(
-                    direction.x * strength,
-                    0.2,
-                    direction.z * strength
-            );
+            player.setVelocity(direction.x * strength, 0.2, direction.z * strength);
 
             player.velocityModified = true;
         }
