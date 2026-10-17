@@ -9,9 +9,9 @@ import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
-public class CleaverItem extends Item{
+public class BleedItem extends Item{
 
-    public CleaverItem(Item.Settings settings) {
+    public BleedItem(Item.Settings settings) {
         super(settings);
     }
 
@@ -32,8 +32,6 @@ public class CleaverItem extends Item{
                 true));
 
         if (target.getType().isIn(ModEntityTags.CAN_BE_BUTCHERED)) {
-            target.dropItem(ModItems.MYSTERY_MEAT, 1);
-            target.dropItem(ModItems.MYSTERY_MEAT, 1);
             target.dropItem(ModItems.MYSTERY_MEAT, 1);
         }
     }

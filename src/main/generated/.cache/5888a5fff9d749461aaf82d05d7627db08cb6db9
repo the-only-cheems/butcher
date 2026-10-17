@@ -1,9 +1,13 @@
-// 1.21.1	2026-10-07T18:32:22.7451598	Butcher/Model Definitions
+// 1.21.1	2026-10-17T01:19:39.8602678	Butcher/Model Definitions
+c0b37dc592ef2d39c70a98cb6efa9a8d451d055e assets\butcher\models\item\skinning_knife.json
+cccba1235d748c4ce5990b587c3771e93f2a2dbf assets\butcher\models\item\meat_injector.json
 54343b7fc48bdd8583ebc72c65b51f3b5c950182 assets\butcher\models\block\flesh_block.json
 1d431b84f699126b3bef92ed3efb825542084c45 assets\butcher\models\item\razor.json
+41d8600e3cea53317bb019349d99e65b8a509014 assets\butcher\models\item\steak_knife.json
 5b082978daad01d1404096040f42b1ccfa3b0962 assets\butcher\models\item\flesh_block.json
-8aec622e8d170c38386562e902c7efac850430ca assets\butcher\models\item\cleaver.json
 13e8cbaddf660097b0d8ba8bcf7f53101f7cb1a8 assets\butcher\models\item\mystery_meat.json
+a0f865cac8e7681ea82741d3fad10a55e4b386ec assets\butcher\models\item\bone_saw.json
+8aec622e8d170c38386562e902c7efac850430ca assets\butcher\models\item\cleaver.json
 498bbe589c8523a9f3a2c53f35193fe43abd4a21 assets\butcher\models\item\blood_bucket.json
 099c61f126b89bcc6ae8bf1cc4c358d7184939a2 assets\butcher\blockstates\flesh_block.json
 35f6efea2ab287a302a66ad573a228350b6a15b1 assets\butcher\models\item\mystery_meat_cooked.json

@@ -27,6 +27,11 @@ public class ModItemGroups {
 
                         entries.add(ModItems.RAZOR);
                         entries.add(ModItems.CLEAVER);
+                        entries.add(ModItems.SKINNING_KNIFE);
+                        entries.add(ModItems.BONE_SAW);
+                        entries.add(ModItems.STEAK_KNIFE);
+                        entries.add(ModItems.MEAT_INJECTOR);
+
                         entries.add(ModBlocks.MEAT_GRINDER);
                         entries.add(ModFluids.BLOOD_BUCKET);
 

@@ -123,7 +123,7 @@ public class RazorItem extends Item {
 
 
         target.addStatusEffect(new StatusEffectInstance(ModEffects.BLEED,
-                40,
+                120,
                 0,
                 false,
                 false,
