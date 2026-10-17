@@ -4,6 +4,7 @@ import com.mojang.serialization.MapCodec;
 import name.cheems.butcher.block.custom.FleshLayerBlock;
 import name.cheems.butcher.block.custom.MeatGrinderBlock;
 import name.cheems.butcher.block.custom.MeatPortalBlock;
+import name.cheems.butcher.block.custom.ShopBellBlock;
 import name.cheems.butcher.sound.ModSounds;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.block.*;
@@ -38,6 +39,9 @@ public class ModBlocks {
 
     public static final Block MEAT_GRINDER = registerBlock("meat_grinder",
             new MeatGrinderBlock(AbstractBlock.Settings.create().nonOpaque()));
+
+    public static final Block SHOP_BELL = registerBlock("shop_bell",
+            new ShopBellBlock(AbstractBlock.Settings.create().nonOpaque()));
 
     private static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);

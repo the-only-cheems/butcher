@@ -33,6 +33,7 @@ public class ModItemGroups {
                         entries.add(ModItems.MEAT_INJECTOR);
 
                         entries.add(ModBlocks.MEAT_GRINDER);
+                        entries.add(ModBlocks.SHOP_BELL);
                         entries.add(ModFluids.BLOOD_BUCKET);
 
                     }).build());

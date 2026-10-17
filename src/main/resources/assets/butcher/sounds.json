@@ -34,5 +34,11 @@
     "sounds" : [
       "butcher:flesh_block_fall"
     ]
+  },
+  "shop_door_bell": {
+    "subtitle": "sounds.butcher.shop_door_bell",
+    "sounds" : [
+      "butcher:shop_door_bell"
+    ]
   }
 }

@@ -16,6 +16,8 @@ public class ModSounds {
     public static final SoundEvent FLESH_BLOCK_HIT = regiseterSoundEvent("flesh_block_hit");
     public static final SoundEvent FLESH_BLOCK_FALL = regiseterSoundEvent("flesh_block_fall");
 
+    public static final SoundEvent SHOP_DOOR_BELL = regiseterSoundEvent("shop_door_bell");
+
 
     public static final BlockSoundGroup FLESH_BLOCK_SOUNDS = new BlockSoundGroup(1f,1f,
             FLESH_BLOCK_BREAK, FLESH_BLOCK_STEP, FLESH_BLOCK_PLACE, FLESH_BLOCK_HIT, FLESH_BLOCK_FALL);
