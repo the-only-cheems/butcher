@@ -4,6 +4,7 @@ import name.cheems.butcher.Butcher;
 import name.cheems.butcher.block.ModBlocks;
 import name.cheems.butcher.block.entity.custom.MeatGrinderEntity;
 import name.cheems.butcher.block.entity.custom.ShopBellEntity;
+import name.cheems.butcher.block.entity.custom.ToolRackEntity;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -16,6 +17,9 @@ public class ModBlockEntities {
 
     public static final BlockEntityType<ShopBellEntity> SHOP_BELL_BE = Registry.register(Registries.BLOCK_ENTITY_TYPE, Identifier.of(Butcher.MOD_ID,"shop_bell_be"),
             BlockEntityType.Builder.create(ShopBellEntity::new, ModBlocks.SHOP_BELL).build(null));
+
+    public static final BlockEntityType<ToolRackEntity> TOOL_RACK_BE = Registry.register(Registries.BLOCK_ENTITY_TYPE, Identifier.of(Butcher.MOD_ID, "tool_rack_be"),
+            BlockEntityType.Builder.create(ToolRackEntity::new, ModBlocks.TOOL_RACK).build(null));
 
     public static void registerBlockEntities() {
         Butcher.LOGGER.info("Registering Block entities for " + Butcher.MOD_ID);

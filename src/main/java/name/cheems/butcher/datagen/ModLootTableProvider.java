@@ -20,6 +20,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.MEAT_PORTAL, dropsWithSilkTouch(ModBlocks.MEAT_PORTAL));
         addDrop(ModBlocks.FLESH_LAYER);
         addDrop(ModBlocks.SHOP_BELL);
+        addDrop(ModBlocks.TOOL_RACK);
 
     }
 }

@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "butcher:block/tool_rack"
+    },
+    "facing=east": {
+      "model": "butcher:block/tool_rack",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "butcher:block/tool_rack",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "butcher:block/tool_rack",
+      "y": 270
+    }
+  }
+}

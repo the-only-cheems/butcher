@@ -34,6 +34,7 @@ public class ModItemGroups {
 
                         entries.add(ModBlocks.MEAT_GRINDER);
                         entries.add(ModBlocks.SHOP_BELL);
+                        entries.add(ModBlocks.TOOL_RACK);
                         entries.add(ModFluids.BLOOD_BUCKET);
 
                     }).build());

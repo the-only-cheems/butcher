@@ -1,5 +1,7 @@
 package name.cheems.butcher;
 
+import name.cheems.butcher.block.entity.ModBlockEntities;
+import name.cheems.butcher.block.entity.renderer.ToolRackEntityRenderer;
 import name.cheems.butcher.client.CorruptionClientData;
 import name.cheems.butcher.client.CorruptionHud;
 import name.cheems.butcher.fluid.ModFluids;
@@ -16,6 +18,8 @@ import net.fabricmc.fabric.api.client.render.fluid.v1.FluidRenderHandlerRegistry
 import net.fabricmc.fabric.api.client.render.fluid.v1.SimpleFluidRenderHandler;
 import net.minecraft.client.gui.screen.ingame.HandledScreens;
 import net.minecraft.client.render.RenderLayer;
+import net.minecraft.client.render.block.entity.BlockEntityRenderer;
+import net.minecraft.client.render.block.entity.BlockEntityRendererFactories;
 import net.minecraft.util.Identifier;
 
 
@@ -34,6 +38,8 @@ public class ButcherClient implements ClientModInitializer {
 
         BlockRenderLayerMap.INSTANCE.putFluids(RenderLayer.getTranslucent(),
                 ModFluids.STILL_BLOOD, ModFluids.FLOWING_BLOOD);
+
+        BlockEntityRendererFactories.register(ModBlockEntities.TOOL_RACK_BE, ToolRackEntityRenderer::new);
 
         HandledScreens.register(ModScreenHandlers.MEAT_GRINDER_SCREEN_HANDLER, MeatGrinderScreen::new);
 
